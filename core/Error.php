@@ -7,8 +7,12 @@ class Error
 
     public static function log()
     {
-        Log::log(self::CLASSNAME, File::tail(Settings::$error_log, 50));
+        if (file_exists(Settings::$errorLog))
+            Log::log(self::CLASSNAME, File::tail(Settings::$errorLog, 50));
+        else
+            Log::log(self::CLASSNAME, "Error file not exist!");
     }
 
+    
 }
 

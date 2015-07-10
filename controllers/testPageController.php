@@ -15,11 +15,11 @@ dd(memory_get_peak_usage());
 //var_dump(router::$URNPart);
 //var_dump(File::getSubDirNames (Settings::$filePathControlers));
 
-//registry::setData("key","jivko");
-//print registry::getData("key");
+Registry::setData("key","jivko");
+print Registry::getData("key");
 
-//Cookie::set("jivko","jivko145");
-//print Cookie::get("jivko");
+Cookie::set("jivko","jivko145");
+print Cookie::get("jivko");
 
 //Core::$oDb->db_updateData("users", array ("id" => 1), array("name" => 'jivko jechev'),1);
 //Core::$oDb->db_setData("users",array("name" => 'jivko jechev 123'),1);
@@ -27,8 +27,8 @@ dd(memory_get_peak_usage());
 //$res = Core::$oDb->db_getData("users",array("id" => '32'),array('*'),1);
 //Log::dump($res);
 
-//view::replace("%replacetest%", "new replace string");
-//view::replace("81dc9bdb52d04dc20036dbd8313ed055", "new replace string");
+view::setReplaceValue("replacetest", "new replace string");
+view::setReplaceValue("81dc9bdb52d04dc20036dbd8313ed055", "new replace string");
 
 //view::template("article");
 

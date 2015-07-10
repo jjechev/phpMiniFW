@@ -18,5 +18,4 @@ class HTTP
         else
             header($string, $replace, $http_response_code);
     }
-
 }

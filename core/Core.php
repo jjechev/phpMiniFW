@@ -3,20 +3,32 @@
 class Core extends Settings
 {
 
+    private $run = false;
     private static $_startTime, $_endTime;
-    public static $oText;
-    public static $oRouter;
-    public static $oViev;
-    public static $oDb;
-    public static $oCache;
-    public static $oSession;
-    public static $oAuth;
-    public static $oError;
+    private static $oRouter;
+    private static $oViev;
+    private static $oDb;
+    private static $oCache;
+    private static $oSession;
+    private static $oError;
 
     const CLASSNAME = 'CORE';
     const EXCEPTION = 'EXCEPTION';
 
     public function __construct()
+    {
+        $this->coreRun();
+    }
+
+    public function __destruct()
+    {
+        if ($this->run)
+        {
+            $this->coreEnd();
+        }
+    }
+
+    private function coreRun()
     {
         set_exception_handler(array($this, "_exceptionHendler"));
 
@@ -41,9 +53,11 @@ class Core extends Settings
 
         $this->oView = new View;
         $this->oRouter = new Router;
+
+        $this->run = true;
     }
 
-    public function __destruct()
+    private function coreEnd()
     {
         $this->_endTime = microtime(true);
         $this->endSystemLog();
@@ -135,6 +149,7 @@ class Core extends Settings
     {
         Log::log(self::EXCEPTION, $ex);
     }
+
 }
 
 function dd($s)

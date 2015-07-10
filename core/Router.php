@@ -106,9 +106,7 @@ class Router extends Settings
 //            else$subdomain
 //                $domain = $urn;
             if (preg_match(Core::regex($domain), self::$URN) &&
-                    ( ($subdomain ? $subdomain == self::$subdomain : true )
-                    OR ( Settings::$routerAutoAddWWW ? 'www.' . $subdomain == self::$subdomain : false)
-                    )
+                    ( ($subdomain ? $subdomain == self::$subdomain : true ) )
             )
             {
                 if ($controllerExist = self::loadControler($controller, $method))

@@ -1,21 +1,19 @@
 <?php
 
-Settings::init();
+Settings::settingsInit();
 
 class Settings extends Config
 {
-    public static function init()
+    public static function settingsInit()
     {
         error_reporting(self::$errorReporting);
-
+        ini_set('log_errors', TRUE);
+        
         self::$projectFullPath = realpath(__dir__ . "/../");
         self::$projectFullPublicPath = self::$projectFullPath . '/' . self::$projectFullPublicPath;
 
         ini_set('log_errors', TRUE);
-
-        $errorLogFile = self::$projectFullPath . '/' . self::$pathLocal . '/' . self::$error_log;
-        Settings::$error_log = $errorLogFile;
-        ini_set("error_log", $errorLogFile);
+        //ini_set("error_log", $errorLogFile);
     }
 
     public static function displayErrors($key = 'On')

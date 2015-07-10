@@ -19,8 +19,6 @@ class Config extends Routes
     public static $cacheHost = "127.0.0.1";
     public static $cachePort = "11211";
     public static $cacheTTL = 500;
-    //view
-    public static $viewLayout = 'system/htmlLayout';
     //session
     public static $sessionAutostart = true;
     public static $sessionType = 'SessionNative';
@@ -30,15 +28,16 @@ class Config extends Routes
     public static $sessionDomain = '';
     public static $sessionSecure = false;
     //core
-    public static $errorReporting = 255;
-    public static $error_log = "php_errors.log";
     public static $filePathViews = array('../views', '../core/system/views');
-    public static $autoloadFilesPath = array('../core', '../models', '../controllers', '../core/system/controllers');
+    public static $autoloadFilesPath = array('../core', '../core/lib', '../models', '../controllers', '../core/system/controllers');
     public static $regexFind = array('/', '.', '?', '*');
     public static $regexReplace = array('\/', '\.', '(.)', '(.*)[^\/]');
     //router
     public static $routerAutoAddWWW = true;
     public static $routerUrlType = "pretty"; // pretty or restful
-    //Pages
-  
+    //errorlog
+    public static $errorReporting = 255;
+    public static $errorLog = "'/var/log/php_errors.log";
+    //view
+    public static $viewLayout = 'system/htmlLayout';
 }

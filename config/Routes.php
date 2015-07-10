@@ -11,6 +11,11 @@ class Routes
         //projects
         'test' => array(null, '/test', 'testPageController'),
         'indexPage' => array(null, '/', 'IndexPageController', 'index'),
+        
+//        'testpageIna' => array(null, '/ina*', 'PageIna', 'pageInaindex'),
+        'testpageIna' => array(null, '/ina', 'PageIna', 'pageInaindex'),
+        
+        
 //        'adminCategory' => array('admin', '/category', 'adminPageCategoryController', 'dispatcher'),
 //        'adminCategoryShow' => array('admin', '/category/*', 'adminPageCategoryController', 'dispatcher'),
     );
