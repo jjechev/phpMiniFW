@@ -5,12 +5,12 @@ class Core extends Settings
 
     private $run = false;
     private static $_startTime, $_endTime;
-    private static $oRouter;
-    private static $oViev;
-    private static $oDb;
-    private static $oCache;
-    private static $oSession;
-    private static $oError;
+    private static $_oRouter;
+    private static $_oViev;
+    private static $_oDb;
+    private static $_oCache;
+    private static $_oSession;
+    private static $_oError;
 
     const CLASSNAME = 'CORE';
     const EXCEPTION = 'EXCEPTION';
@@ -38,15 +38,15 @@ class Core extends Settings
 
         // init Session
         if (Settings::$sessionAutostart)
-            self::$oSession = new Settings::$sessionType;
+            self::$_oSession = new Settings::$sessionType;
 
         // init DB
         if (Settings::$dbEnable)
-            self::$oDb = new Settings::$dbDriver;
+            self::$_oDb = new Settings::$dbDriver;
 
         // init cache
         if (Settings::$cacheEnable)
-            self::$oCache = new Settings::$cacheDriver;
+            self::$_oCache = new Settings::$cacheDriver;
 
         $this->startSystemLog();
         Error::log();
@@ -64,6 +64,15 @@ class Core extends Settings
         View::render();
     }
 
+    public static function getInstance($class)
+    {
+        $class = "_o".$class;
+
+        if (isset (self::${$class}))
+            return self::${$class};
+        return false;
+    }
+    
     private function startSystemLog()
     {
         //Dump ENV variables
