@@ -5,6 +5,12 @@ class Config extends Routes
     public static $projectFullPath;
     public static $projectFullPublicPath = "public";
     public static $pathLocal = 'local';
+    //log
+    public static $debugShowDebug = true; // default false
+    public static $debugMagicWord = 'showme32';
+    
+    public static $debugLogOutPutType = 'VARDUMP';
+//    const LOGOUTPUTTYPE = 'PRINTR';
     //DB
     public static $dbEnable = true;
     public static $dbDriver = "DbPDOMySQL";

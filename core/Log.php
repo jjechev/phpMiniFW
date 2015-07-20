@@ -5,13 +5,9 @@ class Log
 
     private static $_log;
     private static $_logTypeCount = array();
-    public static $showDebug = true; // default false
 
-    const DEBUGMAGICWORLD = 'showme32';
     const DUMPLOGWORD = 'DUMP';
-    const LOGOUTPUTTYPE = 'VARDUMP2';
 
-//    const LOGOUTPUTTYPE = 'PRINTR';
 
     private function __construct()
     {
@@ -20,7 +16,7 @@ class Log
 
     public static function log($key, $text = '', $label = '')
     {
-        if (self::$showDebug)
+        if (Settings::$debugShowDebug)
         {
             if (!isset(self::$_logTypeCount[$key]))
                 self::$_logTypeCount[$key] = 1;
@@ -32,7 +28,7 @@ class Log
 
             $ltc = self::$_logTypeCount[$key] . $label;
 
-            if (self::LOGOUTPUTTYPE === "VARDUMP")
+            if (Settings::$debugLogOutPutType === "VARDUMP")
             {
                 ob_start();
                 print "<pre>";
@@ -55,9 +51,9 @@ class Log
 
     public static function setDebug()
     {
-        if (isset($_GET[self::DEBUGMAGICWORLD]) || self::$showDebug === true)
+        if (isset($_GET[Settings::$debugMagicWord]) || Settings::$debugShowDebug === true)
         {
-            self::$showDebug = true;
+            Settings::$debugShowDebug = true;
             Settings::displayErrors();
         }
     }

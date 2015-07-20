@@ -85,7 +85,7 @@ class Core extends Settings
         View::addInLogViews();
         Log::log(self::CLASSNAME, 'Load Average: ' . $this->loadAverage());
         Log::log(self::CLASSNAME, 'Execution time: ' . number_format($this->_endTime - $this->_startTime, 5) . 's');
-        if (Log::$showDebug)
+        if (Settings::$debugShowDebug)
             Log::showLog();
     }
 
